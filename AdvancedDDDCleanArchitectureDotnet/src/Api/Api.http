@@ -1,0 +1,31 @@
+﻿@baseUrl = http://localhost:5000
+@contentType = application/json
+
+### 1) Create Order
+POST {{baseUrl}}/orders
+Content-Type: {{contentType}}
+
+{
+  "Email": "test@example.com"
+}
+
+### 2) Add Item
+@orderId = 109704b4-6cd1-46e1-acd9-21e15f776749
+POST {{baseUrl}}/orders/{{orderId}}/items
+Content-Type: {{contentType}}
+
+{
+  "productId": "11111111-1111-1111-1111-111111111111",
+  "unitPrice": 150000,
+  "currency": "IRR",
+  "quantity": 2
+}
+
+### 3) Confirm
+POST {{baseUrl}}/orders/{{orderId}}/confirm
+
+### 4) Pay
+POST {{baseUrl}}/orders/{{orderId}}/pay?paymentRef=PAY-REF-0001
+
+### 5) Get Confirmed Orders
+GET {{baseUrl}}/orders/confirmed
