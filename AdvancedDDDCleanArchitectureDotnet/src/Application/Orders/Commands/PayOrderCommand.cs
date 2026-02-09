@@ -2,7 +2,6 @@
 using Domain.Common;
 using MediatR;
 
-
 namespace Application.Orders.Commands
 {
     public sealed record PayOrderCommand(Guid OrderId, string PaymentRef) : IRequest<Result>;
